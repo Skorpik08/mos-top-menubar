@@ -59,11 +59,11 @@ _topbar_css() {
 }
 .mos-topbar-status {
   position: absolute;
-  top: 4px;
+  top: 1px;
   left: 12px;
   right: 12px;
   display: flex;
-  height: 28px;
+  height: 18px;
   align-items: center;
   gap: 10px;
   overflow: hidden;
@@ -164,7 +164,6 @@ _topbar_css() {
   top: 54px !important;
   left: 8px !important;
   z-index: 1200 !important;
-  display: block !important;
   width: max-content !important;
   min-width: min(220px, calc(100vw - 16px)) !important;
   max-width: min(360px, calc(100vw - 16px)) !important;
@@ -641,29 +640,53 @@ _topbar_runtime() {
     const vue = window.__VUE__;
     if (!router || !vue?.nextTick) return;
 
+    const waitFor = async (findTarget) => {
+      for (let attempt = 0; attempt < 100; attempt += 1) {
+        const target = findTarget();
+        if (target) return target;
+        await new Promise((resolve) => window.setTimeout(resolve, 50));
+      }
+      return null;
+    };
+
     const originalRoute = router.currentRoute.value.fullPath;
     const returnAfterCancel = router.currentRoute.value.path !== '/mosTools';
     if (returnAfterCancel) await router.push('/mosTools');
-    await vue.nextTick();
 
     const actionLabel = translate(action, action === 'reboot' ? 'Reboot' : 'Shut down');
-    const actionItem = [...document.querySelectorAll('#app .v-main .v-list-item')]
-      .find((item) => item.textContent.trim().includes(actionLabel));
+    const actionItem = await waitFor(() => [...document.querySelectorAll('#app .v-main .v-list-item')]
+      .find((item) => item.textContent.trim().includes(actionLabel)));
     if (!actionItem) {
       if (returnAfterCancel) await router.push(originalRoute);
       return;
     }
 
     actionItem.click();
-    await vue.nextTick();
+    const overlayContainer = document.querySelector('.v-overlay-container');
+    const dialogText = action === 'reboot'
+      ? translate('do you want to reboot your system?', 'Do you want to reboot your system?')
+      : translate('do you want to shutdown your system?', 'Do you want to shut down your system?');
+    const dialog = await waitFor(() => [...(overlayContainer?.querySelectorAll('.v-overlay--active .v-card') || [])]
+      .find((card) => card.textContent.includes(dialogText)));
+    if (!dialog) {
+      if (returnAfterCancel) await router.push(originalRoute);
+      return;
+    }
     if (!returnAfterCancel) return;
 
-    const overlayContainer = document.querySelector('.v-overlay-container');
     if (!overlayContainer) return;
+    let returnToPreviousRoute = true;
+    dialog.addEventListener('click', (event) => {
+      const button = event.target.closest('.v-card-actions button');
+      if (!button) return;
+      if (button.textContent.trim() === translate('ok', 'Ok')) returnToPreviousRoute = false;
+      if (button.textContent.trim() === translate('cancel', 'Cancel')) returnToPreviousRoute = true;
+    }, true);
+
     const dialogObserver = new MutationObserver(() => {
       if (overlayContainer.querySelector('.v-overlay--active')) return;
       dialogObserver.disconnect();
-      if (router.currentRoute.value.path === '/mosTools') router.push(originalRoute);
+      if (returnToPreviousRoute && router.currentRoute.value.path === '/mosTools') router.push(originalRoute);
     });
     dialogObserver.observe(overlayContainer, {
       attributes: true,
