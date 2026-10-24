@@ -2,12 +2,12 @@
   "name": "Top Menu Bar",
   "description": "Zeigt die MOS-Navigation als horizontale Menüleiste unter der Kopfzeile an.",
   "category": [ "Utilities" ],
-  "repository": "https://github.com/Skorpi08/mos-top-menubar",
+  "repository": "https://github.com/Skorpik08/mos-top-menubar",
   "driver": false,
   "settings": true,
   "icon": "mdi-page-layout-header",
-  "readme_url": "https://github.com/Skorpi08/mos-top-menubar#readme",
+  "readme_url": "https://github.com/Skorpik08/mos-top-menubar#readme",
   "author": "Skorpi08",
-  "homepage": "https://github.com/Skorpi08/mos-top-menubar",
-  "support": "https://github.com/Skorpi08/mos-top-menubar/issues"
+  "homepage": "https://github.com/Skorpik08/mos-top-menubar",
+  "support": "https://github.com/Skorpik08/mos-top-menubar/issues"
 }

@@ -6,6 +6,6 @@ export default {
   icon: 'mdi-page-layout-header',
   settings: true,
   author: 'Skorpi08',
-  homepage: 'https://github.com/Skorpi08/mos-top-menubar',
+  homepage: 'https://github.com/Skorpik08/mos-top-menubar',
   widget: false,
 };
