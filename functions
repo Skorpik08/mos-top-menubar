@@ -63,21 +63,21 @@ _topbar_css() {
   left: 12px;
   right: 188px;
   display: flex;
-  height: 36px;
+  height: 22px;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   overflow: hidden;
   color: var(--mos-topbar-fg);
-  font-size: 10px;
+  font-size: 20px;
   line-height: 1;
   white-space: nowrap;
   pointer-events: none !important;
   z-index: 3;
 }
 .mos-topbar-status img {
-  width: 26px;
-  height: 26px;
-  flex: 0 0 26px;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
   object-fit: contain;
 }
 .mos-topbar-status__host {
@@ -138,7 +138,7 @@ _topbar_css() {
   min-width: 100% !important;
   height: 82px !important;
   box-sizing: border-box !important;
-  padding: 46px 12px 0 0 !important;
+  padding: 28px 12px 0 0 !important;
   overflow: visible !important;
   background: transparent !important;
   color: var(--mos-topbar-fg) !important;
@@ -171,7 +171,7 @@ _topbar_css() {
   max-height: calc(100vh - 98px) !important;
   overflow-x: hidden !important;
   overflow-y: auto !important;
-  background: #191919 !important;
+  background: var(--mos-topbar-bg) !important;
   color: var(--mos-topbar-fg) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22) !important;
 }
@@ -190,7 +190,7 @@ _topbar_css() {
 }
 .mos-topbar-actions {
   position: absolute !important;
-  top: 48px;
+  top: 38px;
   right: 8px;
   display: flex;
   flex: 0 0 auto;
@@ -254,7 +254,7 @@ _topbar_css() {
   padding: 6px;
   border: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
   border-radius: 8px;
-  background: #191919;
+  background: var(--mos-topbar-bg);
   color: var(--mos-topbar-fg);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
 }
@@ -389,7 +389,7 @@ _topbar_css() {
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content > .v-list {
     padding-right: 12px !important;
     padding-left: 0 !important;
-    padding-top: 46px !important;
+    padding-top: 28px !important;
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-list-item {
     min-height: 30px !important;
@@ -403,13 +403,13 @@ _topbar_css() {
     left: 8px;
     right: 174px;
     gap: 6px;
-    font-size: 10px;
+    font-size: 20px;
   }
   .mos-topbar-status__host {
     max-width: 22vw;
   }
   .mos-topbar-actions {
-    top: 48px;
+    top: 38px;
     right: 4px;
     gap: 0;
   }
@@ -516,11 +516,34 @@ _topbar_runtime() {
     if (!drawer) return;
 
     const schedulePosition = () => window.requestAnimationFrame(() => window.requestAnimationFrame(positionGroupMenus));
+    const hoverEnabled = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     if (!drawer.dataset.mosTopbarMenusPositioned) {
       drawer.dataset.mosTopbarMenusPositioned = 'true';
       drawer.addEventListener('click', schedulePosition, true);
       drawer.querySelector('.v-navigation-drawer__content')?.addEventListener('scroll', schedulePosition, { passive: true });
       window.addEventListener('resize', schedulePosition, { passive: true });
+
+      if (hoverEnabled) {
+        for (const group of drawer.querySelectorAll('.v-list-group')) {
+          const activator = group.querySelector('.v-list-group__header .v-list-item')
+            || group.querySelector(':scope > .v-list-item');
+          if (!activator) continue;
+
+          group.addEventListener('pointerenter', (event) => {
+            if (event.pointerType !== 'mouse') return;
+            window.clearTimeout(group._mosTopbarCloseTimer);
+            if (!group.classList.contains('v-list-group--open')) activator.click();
+            schedulePosition();
+          });
+          group.addEventListener('pointerleave', (event) => {
+            if (event.pointerType !== 'mouse') return;
+            window.clearTimeout(group._mosTopbarCloseTimer);
+            group._mosTopbarCloseTimer = window.setTimeout(() => {
+              if (!group.matches(':hover') && group.classList.contains('v-list-group--open')) activator.click();
+            }, 600);
+          });
+        }
+      }
     }
 
     if (document.documentElement.dataset.mosTopbarGroupDismiss) return;
@@ -651,6 +674,7 @@ _topbar_runtime() {
       const menu = actions.querySelector('.mos-topbar-menu');
       const moreContainer = actions.querySelector('.mos-topbar-more');
       const hoverMenu = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      let hoverCloseTimer;
       const setMenuOpen = (open) => {
         menu.hidden = !open;
         moreButton.setAttribute('aria-expanded', String(open));
@@ -663,10 +687,18 @@ _topbar_runtime() {
         setMenuOpen(menu.hidden);
       });
       moreContainer.addEventListener('pointerenter', (event) => {
-        if (hoverMenu && event.pointerType === 'mouse') setMenuOpen(true);
+        if (hoverMenu && event.pointerType === 'mouse') {
+          window.clearTimeout(hoverCloseTimer);
+          setMenuOpen(true);
+        }
       });
       moreContainer.addEventListener('pointerleave', (event) => {
-        if (hoverMenu && event.pointerType === 'mouse') setMenuOpen(false);
+        if (hoverMenu && event.pointerType === 'mouse') {
+          window.clearTimeout(hoverCloseTimer);
+          hoverCloseTimer = window.setTimeout(() => {
+            if (!moreContainer.matches(':hover')) setMenuOpen(false);
+          }, 600);
+        }
       });
 
       actions.addEventListener('click', async (event) => {
