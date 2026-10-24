@@ -58,7 +58,7 @@ _topbar_css() {
   display: none !important;
 }
 .mos-topbar-status {
-  position: absolute;
+  position: absolute !important;
   top: 10px;
   left: 12px;
   right: 188px;
@@ -190,7 +190,7 @@ _topbar_css() {
 }
 .mos-topbar-actions {
   position: absolute !important;
-  top: 1px;
+  top: 5px;
   right: 8px;
   display: flex;
   flex: 0 0 auto;
@@ -409,7 +409,7 @@ _topbar_css() {
     max-width: 22vw;
   }
   .mos-topbar-actions {
-    top: 1px;
+    top: 5px;
     right: 4px;
     gap: 0;
   }
@@ -561,6 +561,15 @@ _topbar_runtime() {
         if (isOpen && targetGroup !== group) activator?.click();
       }
     }, true);
+    document.addEventListener('click', (event) => {
+      const targetGroup = event.target.closest('.v-list-group');
+      if (!targetGroup) return;
+
+      const activator = targetGroup.querySelector('.v-list-group__header .v-list-item')
+        || targetGroup.querySelector(':scope > .v-list-item');
+      if (!activator || activator.contains(event.target)) return;
+      if (targetGroup.classList.contains('v-list-group--open')) activator.click();
+    });
   };
 
   const createStatusRow = () => {
