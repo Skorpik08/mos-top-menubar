@@ -13,9 +13,9 @@ _topbar_css() {
   cat <<'CSS'
 <style id="mos-topbar-style">
 #app {
-  --mos-topbar-bg: #111111;
-  --mos-topbar-fg: #f2f2f2;
-  --mos-topbar-accent: #d65a32;
+  --mos-topbar-bg: rgb(var(--v-theme-primary));
+  --mos-topbar-fg: rgb(var(--v-theme-on-primary));
+  --mos-topbar-accent: color-mix(in srgb, rgb(var(--v-theme-primary)) 65%, #ffffff 35%);
 }
 #app > .v-application__wrap > .v-app-bar {
   position: fixed !important;
@@ -23,14 +23,14 @@ _topbar_css() {
   left: 0 !important;
   right: 0 !important;
   width: 100vw !important;
-  height: 54px !important;
+  height: 72px !important;
   z-index: 1101 !important;
   background: transparent !important;
   overflow: visible !important;
   pointer-events: none !important;
 }
 #app > .v-application__wrap > .v-app-bar .v-toolbar__content {
-  height: 54px !important;
+  height: 72px !important;
   background: transparent !important;
   pointer-events: none !important;
   overflow: visible !important;
@@ -61,9 +61,9 @@ _topbar_css() {
   position: absolute;
   top: 1px;
   left: 12px;
-  right: 12px;
+  right: 174px;
   display: flex;
-  height: 18px;
+  height: 36px;
   align-items: center;
   gap: 10px;
   overflow: hidden;
@@ -75,9 +75,9 @@ _topbar_css() {
   z-index: 3;
 }
 .mos-topbar-status img {
-  width: 18px;
-  height: 18px;
-  flex: 0 0 18px;
+  width: 26px;
+  height: 26px;
+  flex: 0 0 26px;
   object-fit: contain;
 }
 .mos-topbar-status__host {
@@ -100,8 +100,8 @@ _topbar_css() {
   right: 0 !important;
   width: 100vw !important;
   max-width: 100vw !important;
-  height: 54px !important;
-  max-height: 54px !important;
+  height: 72px !important;
+  max-height: 72px !important;
   transform: none !important;
   visibility: visible !important;
   z-index: 1100 !important;
@@ -117,10 +117,10 @@ _topbar_css() {
   display: none !important;
 }
 #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content {
-  flex: 0 0 54px !important;
+  flex: 0 0 72px !important;
   width: calc(100% - 250px) !important;
   max-width: calc(100% - 250px) !important;
-  height: 54px !important;
+  height: 72px !important;
   overflow-x: auto !important;
   overflow-y: hidden !important;
   scrollbar-width: none !important;
@@ -136,9 +136,9 @@ _topbar_css() {
   align-items: center !important;
   width: max-content !important;
   min-width: 100% !important;
-  height: 54px !important;
+  height: 72px !important;
   box-sizing: border-box !important;
-  padding: 24px 12px 0 0 !important;
+  padding: 36px 12px 0 0 !important;
   overflow: visible !important;
   background: transparent !important;
   color: var(--mos-topbar-fg) !important;
@@ -161,14 +161,14 @@ _topbar_css() {
 }
 #app > .v-application__wrap > .v-navigation-drawer .v-list-group__items {
   position: fixed !important;
-  top: 54px !important;
+  top: 72px !important;
   left: 8px !important;
   z-index: 1200 !important;
   width: max-content !important;
   min-width: min(220px, calc(100vw - 16px)) !important;
   max-width: min(360px, calc(100vw - 16px)) !important;
   height: auto !important;
-  max-height: calc(100vh - 70px) !important;
+  max-height: calc(100vh - 88px) !important;
   overflow-x: hidden !important;
   overflow-y: auto !important;
   background: #191919 !important;
@@ -190,7 +190,7 @@ _topbar_css() {
 }
 .mos-topbar-actions {
   position: absolute !important;
-  top: 20px;
+  top: 38px;
   right: 8px;
   display: flex;
   flex: 0 0 auto;
@@ -296,49 +296,49 @@ _topbar_css() {
   flex: 0 0 auto !important;
 }
 #app > .v-application__wrap > .v-navigation-drawer .v-list-group__items {
-  top: 54px !important;
-  max-height: calc(100vh - 70px) !important;
+  top: 72px !important;
+  max-height: calc(100vh - 88px) !important;
 }
 #app > .v-application__wrap > .v-navigation-drawer .v-list-group__items .v-list-item {
   width: 100% !important;
   white-space: normal !important;
 }
 .v-main {
-  padding-top: 54px !important;
+  padding-top: 72px !important;
   padding-left: 0 !important;
   --v-layout-left: 0px !important;
 }
 @media (max-width: 600px) {
   #app > .v-application__wrap > .v-navigation-drawer {
     top: 0 !important;
-    height: 54px !important;
-    max-height: 54px !important;
+    height: 72px !important;
+    max-height: 72px !important;
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content,
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content > .v-list {
-    height: 54px !important;
+    height: 72px !important;
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content {
-    flex-basis: 54px !important;
+    flex-basis: 72px !important;
     width: calc(100% - 192px) !important;
     max-width: calc(100% - 192px) !important;
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content > .v-list {
     padding-right: 12px !important;
     padding-left: 0 !important;
-    padding-top: 24px !important;
+    padding-top: 36px !important;
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-list-item {
     min-height: 30px !important;
   }
   .v-main {
-    padding-top: 54px !important;
+    padding-top: 72px !important;
   }
 }
 @media (max-width: 600px) {
   .mos-topbar-status {
     left: 8px;
-    right: 8px;
+    right: 174px;
     gap: 6px;
     font-size: 12px;
   }
@@ -346,7 +346,7 @@ _topbar_css() {
     max-width: 22vw;
   }
   .mos-topbar-actions {
-    top: 20px;
+    top: 38px;
     right: 4px;
     gap: 0;
   }
@@ -369,7 +369,7 @@ _topbar_css() {
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-list-group__items {
     max-width: calc(100vw - 16px) !important;
-    max-height: calc(100vh - 70px) !important;
+    max-height: calc(100vh - 88px) !important;
   }
 }
 @media (max-width: 420px) {
@@ -450,13 +450,28 @@ _topbar_runtime() {
 
   const installGroupMenuPositioning = () => {
     const drawer = document.querySelector(drawerSelector);
-    if (!drawer || drawer.dataset.mosTopbarMenusPositioned) return;
-    drawer.dataset.mosTopbarMenusPositioned = 'true';
+    if (!drawer) return;
 
     const schedulePosition = () => window.requestAnimationFrame(() => window.requestAnimationFrame(positionGroupMenus));
-    drawer.addEventListener('click', schedulePosition, true);
-    drawer.querySelector('.v-navigation-drawer__content')?.addEventListener('scroll', schedulePosition, { passive: true });
-    window.addEventListener('resize', schedulePosition, { passive: true });
+    if (!drawer.dataset.mosTopbarMenusPositioned) {
+      drawer.dataset.mosTopbarMenusPositioned = 'true';
+      drawer.addEventListener('click', schedulePosition, true);
+      drawer.querySelector('.v-navigation-drawer__content')?.addEventListener('scroll', schedulePosition, { passive: true });
+      window.addEventListener('resize', schedulePosition, { passive: true });
+    }
+
+    if (document.documentElement.dataset.mosTopbarGroupDismiss) return;
+    document.documentElement.dataset.mosTopbarGroupDismiss = 'true';
+    document.addEventListener('pointerdown', (event) => {
+      const targetGroup = event.target.closest('.v-list-group');
+      for (const group of document.querySelectorAll(`${drawerSelector} .v-list-group`)) {
+        const activator = group.querySelector('.v-list-group__header .v-list-item')
+          || group.querySelector(':scope > .v-list-item');
+        const isOpen = activator?.getAttribute('aria-expanded') === 'true'
+          || group.classList.contains('v-list-group--open');
+        if (isOpen && targetGroup !== group) activator?.click();
+      }
+    }, true);
   };
 
   const createStatusRow = () => {
@@ -637,8 +652,7 @@ _topbar_runtime() {
   const openOriginalPowerDialog = async (action) => {
     const app = document.querySelector('#app')?.__vue_app__;
     const router = app?.config?.globalProperties?.$router;
-    const vue = window.__VUE__;
-    if (!router || !vue?.nextTick) return;
+    if (!router) return;
 
     const waitFor = async (findTarget) => {
       for (let attempt = 0; attempt < 100; attempt += 1) {
@@ -663,11 +677,9 @@ _topbar_runtime() {
 
     actionItem.click();
     const overlayContainer = document.querySelector('.v-overlay-container');
-    const dialogText = action === 'reboot'
-      ? translate('do you want to reboot your system?', 'Do you want to reboot your system?')
-      : translate('do you want to shutdown your system?', 'Do you want to shut down your system?');
-    const dialog = await waitFor(() => [...(overlayContainer?.querySelectorAll('.v-overlay--active .v-card') || [])]
-      .find((card) => card.textContent.includes(dialogText)));
+    const dialog = await waitFor(() => [...(overlayContainer?.querySelectorAll('.v-overlay--active, [role="dialog"]') || [])]
+      .find((element) => element.textContent.includes(actionLabel)
+        && element.querySelector('.v-card-actions button')));
     if (!dialog) {
       if (returnAfterCancel) await router.push(originalRoute);
       return;
