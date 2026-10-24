@@ -18,14 +18,14 @@ _topbar_css() {
   left: 0 !important;
   right: 0 !important;
   width: 100vw !important;
-  height: 120px !important;
+  height: 72px !important;
   z-index: 1101 !important;
   background: transparent !important;
   overflow: visible !important;
   pointer-events: none !important;
 }
 #app > .v-application__wrap > .v-app-bar .v-toolbar__content {
-  height: 120px !important;
+  height: 72px !important;
   background: transparent !important;
   pointer-events: none !important;
   overflow: visible !important;
@@ -58,12 +58,12 @@ _topbar_css() {
   left: 12px;
   right: 12px;
   display: flex;
-  height: 32px;
+  height: 28px;
   align-items: center;
   gap: 10px;
   overflow: hidden;
   color: rgb(var(--v-theme-on-primary));
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1;
   white-space: nowrap;
   pointer-events: none !important;
@@ -95,8 +95,8 @@ _topbar_css() {
   right: 0 !important;
   width: 100vw !important;
   max-width: 100vw !important;
-  height: 120px !important;
-  max-height: 120px !important;
+  height: 72px !important;
+  max-height: 72px !important;
   transform: none !important;
   visibility: visible !important;
   z-index: 1100 !important;
@@ -112,10 +112,10 @@ _topbar_css() {
   display: none !important;
 }
 #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content {
-  flex: 0 0 120px !important;
+  flex: 0 0 72px !important;
   width: min(50vw, calc(100% - 250px)) !important;
   max-width: min(50vw, calc(100% - 250px)) !important;
-  height: 120px !important;
+  height: 72px !important;
   overflow-x: auto !important;
   overflow-y: hidden !important;
   scrollbar-width: none !important;
@@ -131,9 +131,9 @@ _topbar_css() {
   align-items: center !important;
   width: max-content !important;
   min-width: 100% !important;
-  height: 120px !important;
+  height: 72px !important;
   box-sizing: border-box !important;
-  padding: 46px 12px 0 !important;
+  padding: 30px 12px 0 !important;
   overflow: visible !important;
   background: transparent !important;
   color: rgb(var(--v-theme-on-primary)) !important;
@@ -148,20 +148,25 @@ _topbar_css() {
 #app > .v-application__wrap > .v-navigation-drawer .v-list-item__prepend {
   display: none !important;
 }
+#app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content > .v-list > .v-list-item:first-child {
+  padding-left: 0 !important;
+}
 #app > .v-application__wrap > .v-navigation-drawer .v-list-item--active {
   background: rgba(255, 255, 255, 0.16) !important;
 }
 #app > .v-application__wrap > .v-navigation-drawer .v-list-group__items {
-  position: absolute !important;
-  top: 100% !important;
-  left: 0 !important;
-  z-index: 1110 !important;
+  position: fixed !important;
+  top: 72px !important;
+  left: 8px !important;
+  z-index: 1200 !important;
   display: block !important;
   width: max-content !important;
-  min-width: 220px !important;
-  max-width: min(320px, 90vw) !important;
-  max-height: calc(100vh - 80px) !important;
-  overflow: auto !important;
+  min-width: min(220px, calc(100vw - 16px)) !important;
+  max-width: min(360px, calc(100vw - 16px)) !important;
+  height: auto !important;
+  max-height: calc(100vh - 88px) !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
   background: rgb(var(--v-theme-surface)) !important;
   color: rgb(var(--v-theme-on-surface)) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22) !important;
@@ -181,7 +186,7 @@ _topbar_css() {
 }
 .mos-topbar-actions {
   position: absolute !important;
-  top: 64px;
+  top: 32px;
   right: 8px;
   display: flex;
   flex: 0 0 auto;
@@ -287,53 +292,43 @@ _topbar_css() {
   flex: 0 0 auto !important;
 }
 #app > .v-application__wrap > .v-navigation-drawer .v-list-group__items {
-  position: absolute !important;
-  top: 100% !important;
-  left: 0 !important;
-  z-index: 1110 !important;
-  display: block !important;
-  width: max-content !important;
-  min-width: 220px !important;
-  max-width: min(320px, 90vw) !important;
-  max-height: calc(100vh - 140px) !important;
-  overflow: auto !important;
-  background: rgb(var(--v-theme-surface)) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22) !important;
+  top: 72px !important;
+  max-height: calc(100vh - 88px) !important;
 }
 #app > .v-application__wrap > .v-navigation-drawer .v-list-group__items .v-list-item {
   width: 100% !important;
   white-space: normal !important;
 }
 .v-main {
-  padding-top: 120px !important;
+  padding-top: 72px !important;
   padding-left: 0 !important;
   --v-layout-left: 0px !important;
 }
 @media (max-width: 600px) {
   #app > .v-application__wrap > .v-navigation-drawer {
     top: 0 !important;
-    height: 120px !important;
-    max-height: 120px !important;
+    height: 72px !important;
+    max-height: 72px !important;
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content,
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content > .v-list {
-    height: 120px !important;
+    height: 72px !important;
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content {
-    flex-basis: 120px !important;
+    flex-basis: 72px !important;
     width: min(50vw, calc(100% - 192px)) !important;
     max-width: min(50vw, calc(100% - 192px)) !important;
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content > .v-list {
     padding-right: 12px !important;
     padding-left: 8px !important;
-    padding-top: 46px !important;
+    padding-top: 30px !important;
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-list-item {
     min-height: 48px !important;
   }
   .v-main {
-    padding-top: 120px !important;
+    padding-top: 72px !important;
   }
 }
 @media (max-width: 600px) {
@@ -341,13 +336,13 @@ _topbar_css() {
     left: 8px;
     right: 8px;
     gap: 6px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .mos-topbar-status__host {
     max-width: 22vw;
   }
   .mos-topbar-actions {
-    top: 68px;
+    top: 34px;
     right: 4px;
     gap: 0;
   }
@@ -367,6 +362,10 @@ _topbar_css() {
   }
   .mos-topbar-menu {
     min-width: min(220px, calc(100vw - 16px));
+  }
+  #app > .v-application__wrap > .v-navigation-drawer .v-list-group__items {
+    max-width: calc(100vw - 16px) !important;
+    max-height: calc(100vh - 80px) !important;
   }
 }
 @media (max-width: 420px) {
@@ -419,6 +418,39 @@ _topbar_runtime() {
   const enableDrawer = () => {
     const drawer = document.querySelector(drawerSelector);
     if (drawer?.inert) drawer.inert = false;
+  };
+
+  const positionGroupMenus = () => {
+    const drawer = document.querySelector(drawerSelector);
+    if (!drawer) return;
+
+    for (const menu of drawer.querySelectorAll('.v-list-group__items')) {
+      if (window.getComputedStyle(menu).display === 'none') continue;
+      const activator = menu.closest('.v-list-group')?.querySelector(':scope > .v-list-item');
+      if (!activator) continue;
+
+      const anchor = activator.getBoundingClientRect();
+      const bounds = menu.getBoundingClientRect();
+      const width = Math.min(Math.max(bounds.width, 220), window.innerWidth - 16);
+      const left = Math.max(8, Math.min(anchor.left, window.innerWidth - width - 8));
+      const height = Math.min(bounds.height, window.innerHeight - 88);
+      let top = anchor.bottom + 8;
+      if (top + height > window.innerHeight - 8) top = Math.max(8, anchor.top - height - 8);
+
+      menu.style.setProperty('left', `${left}px`, 'important');
+      menu.style.setProperty('top', `${top}px`, 'important');
+    }
+  };
+
+  const installGroupMenuPositioning = () => {
+    const drawer = document.querySelector(drawerSelector);
+    if (!drawer || drawer.dataset.mosTopbarMenusPositioned) return;
+    drawer.dataset.mosTopbarMenusPositioned = 'true';
+
+    const schedulePosition = () => window.requestAnimationFrame(() => window.requestAnimationFrame(positionGroupMenus));
+    drawer.addEventListener('click', schedulePosition, true);
+    drawer.querySelector('.v-navigation-drawer__content')?.addEventListener('scroll', schedulePosition, { passive: true });
+    window.addEventListener('resize', schedulePosition, { passive: true });
   };
 
   const createStatusRow = () => {
@@ -644,6 +676,7 @@ _topbar_runtime() {
 
   const syncTopbar = () => {
     enableDrawer();
+    installGroupMenuPositioning();
     createStatusRow();
     hideNativeActionItems();
     createActions();
