@@ -59,7 +59,7 @@ _topbar_css() {
 }
 .mos-topbar-status {
   position: absolute;
-  top: 5px;
+  top: 10px;
   left: 12px;
   right: 188px;
   display: flex;
@@ -138,7 +138,7 @@ _topbar_css() {
   min-width: 100% !important;
   height: 82px !important;
   box-sizing: border-box !important;
-  padding: 28px 12px 0 0 !important;
+  padding: 18px 12px 0 0 !important;
   overflow: visible !important;
   background: transparent !important;
   color: var(--mos-topbar-fg) !important;
@@ -190,7 +190,7 @@ _topbar_css() {
 }
 .mos-topbar-actions {
   position: absolute !important;
-  top: 38px;
+  top: 1px;
   right: 8px;
   display: flex;
   flex: 0 0 auto;
@@ -205,7 +205,6 @@ _topbar_css() {
   position: relative;
 }
 .mos-topbar-action {
-    top: -4px;
   width: 34px;
   height: 32px;
   flex: 0 0 34px;
@@ -389,7 +388,7 @@ _topbar_css() {
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content > .v-list {
     padding-right: 12px !important;
     padding-left: 0 !important;
-    padding-top: 28px !important;
+    padding-top: 18px !important;
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-list-item {
     min-height: 30px !important;
@@ -403,14 +402,14 @@ _topbar_css() {
     left: 8px;
     right: 174px;
     gap: 6px;
-    top: 5px;
+    top: 10px;
     font-size: 15px;
   }
   .mos-topbar-status__host {
     max-width: 22vw;
   }
   .mos-topbar-actions {
-    top: -3px;
+    top: 1px;
     right: 4px;
     gap: 0;
   }
@@ -528,18 +527,24 @@ _topbar_runtime() {
         for (const group of drawer.querySelectorAll('.v-list-group')) {
           const activator = group.querySelector('.v-list-group__header .v-list-item')
             || group.querySelector(':scope > .v-list-item');
+          const menu = group.querySelector('.v-list-group__items');
           if (!activator) continue;
 
           group.addEventListener('pointerenter', (event) => {
             if (event.pointerType !== 'mouse') return;
+            window.clearTimeout(group._mosTopbarCloseTimer);
             if (!group.classList.contains('v-list-group--open')) activator.click();
             schedulePosition();
           });
           group.addEventListener('pointerleave', (event) => {
             if (event.pointerType !== 'mouse') return;
             if (!group.classList.contains('v-list-group--open')) return;
-            activator.click();
+            window.clearTimeout(group._mosTopbarCloseTimer);
+            group._mosTopbarCloseTimer = window.setTimeout(() => {
+              if (!group.matches(':hover') && group.classList.contains('v-list-group--open')) activator.click();
+            }, 900);
           });
+          menu?.addEventListener('pointerenter', () => window.clearTimeout(group._mosTopbarCloseTimer));
         }
       }
     }
