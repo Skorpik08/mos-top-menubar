@@ -16,7 +16,7 @@ Nach dem Umbenennen des GitHub-Repositories von `mos-unraid` zu `mos-top-menubar
 
 ## Entwicklung
 
-Das Plugin verwendet die MOS-Vue-Federation-Schnittstelle. Release-Tags müssen dem Format `1.0.14` ohne führendes `v` entsprechen, damit MOS das Plugin beim Start erkennt. Ein neuer numerischer Release-Tag baut das Frontend-Remote und veröffentlicht das MOS-Pluginpaket samt Prüfsumme. Das Repository heißt `mos-top-menubar`, damit MOS-Repository-Slug und Plugin-ID `top-menubar` übereinstimmen.
+Das Plugin verwendet die MOS-Vue-Federation-Schnittstelle. Release-Tags müssen dem Format `1.0.15` ohne führendes `v` entsprechen, damit MOS das Plugin beim Start erkennt. Ein neuer numerischer Release-Tag baut das Frontend-Remote und veröffentlicht das MOS-Pluginpaket samt Prüfsumme. Das Repository heißt `mos-top-menubar`, damit MOS-Repository-Slug und Plugin-ID `top-menubar` übereinstimmen.
 
 ## Deinstallation
 

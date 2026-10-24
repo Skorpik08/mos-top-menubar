@@ -18,13 +18,13 @@ _topbar_css() {
   left: 0 !important;
   right: 0 !important;
   width: 100vw !important;
-  height: 64px !important;
+  height: 96px !important;
   z-index: 1101 !important;
   background: transparent !important;
   pointer-events: none !important;
 }
 #app > .v-application__wrap > .v-app-bar .v-toolbar__content {
-  height: 64px !important;
+  height: 96px !important;
   background: transparent !important;
   pointer-events: none !important;
 }
@@ -34,21 +34,57 @@ _topbar_css() {
   z-index: 2;
 }
 #app > .v-application__wrap > .v-app-bar .v-toolbar__content > .v-badge {
-  position: absolute !important;
-  top: 8px !important;
-  right: 188px !important;
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
 }
 #app > .v-application__wrap > .v-app-bar .v-toolbar__content > a[href="/profile"] {
-  position: absolute !important;
-  top: 8px !important;
-  right: 140px !important;
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
 }
 #app > .v-application__wrap > .v-app-bar .v-app-bar-nav-icon {
   display: none !important;
 }
+#app > .v-application__wrap > .v-app-bar .v-img,
 #app > .v-application__wrap > .v-app-bar .v-toolbar-title {
-  flex: 0 1 auto !important;
-  min-width: 0 !important;
+  display: none !important;
+}
+.mos-topbar-status {
+  position: absolute;
+  top: 3px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  height: 26px;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  color: rgb(var(--v-theme-on-primary));
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none !important;
+  z-index: 3;
+}
+.mos-topbar-status img {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  object-fit: contain;
+}
+.mos-topbar-status__host {
+  max-width: 180px;
+  overflow: hidden;
+  font-weight: 600;
+  text-overflow: ellipsis;
+}
+.mos-topbar-status__detail {
+  flex: 0 0 auto;
+  opacity: 0.86;
+}
+.mos-topbar-status__separator {
+  opacity: 0.55;
 }
 #app > .v-application__wrap > .v-navigation-drawer {
   position: fixed !important;
@@ -57,8 +93,8 @@ _topbar_css() {
   right: 0 !important;
   width: 100vw !important;
   max-width: 100vw !important;
-  height: 64px !important;
-  max-height: 64px !important;
+  height: 96px !important;
+  max-height: 96px !important;
   transform: none !important;
   visibility: visible !important;
   z-index: 1100 !important;
@@ -74,10 +110,10 @@ _topbar_css() {
   display: none !important;
 }
 #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content {
-  flex: 0 0 64px !important;
+  flex: 0 0 96px !important;
   width: calc(100% - 250px) !important;
   max-width: calc(100% - 250px) !important;
-  height: 64px !important;
+  height: 96px !important;
   overflow-x: auto !important;
   overflow-y: hidden !important;
   scrollbar-width: none !important;
@@ -93,9 +129,9 @@ _topbar_css() {
   align-items: center !important;
   width: max-content !important;
   min-width: 100% !important;
-  height: 64px !important;
+  height: 96px !important;
   box-sizing: border-box !important;
-  padding: 0 250px 0 190px !important;
+  padding: 28px 12px 0 !important;
   overflow: visible !important;
   background: transparent !important;
   color: rgb(var(--v-theme-on-primary)) !important;
@@ -138,12 +174,15 @@ _topbar_css() {
   display: none !important;
 }
 .mos-topbar-actions {
+  position: absolute !important;
+  top: 48px;
+  right: 8px;
   display: flex;
   flex: 0 0 auto;
   align-items: center;
   gap: 2px;
-  margin-left: auto;
-  padding: 0 8px;
+  margin-left: 0;
+  padding: 0;
   pointer-events: auto !important;
   position: relative;
   z-index: 3;
@@ -170,6 +209,22 @@ _topbar_css() {
 }
 .mos-topbar-action .mdi {
   font-size: 22px;
+}
+#mos-topbar-actions > .v-badge,
+#mos-topbar-actions > a[href="/profile"] {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  display: inline-flex;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto !important;
+}
+.mos-topbar-status + .v-toolbar-title {
+  display: none !important;
 }
 .mos-topbar-menu {
   position: absolute;
@@ -240,38 +295,35 @@ _topbar_css() {
   white-space: normal !important;
 }
 .v-main {
-  padding-top: 64px !important;
+  padding-top: 96px !important;
   padding-left: 0 !important;
   --v-layout-left: 0px !important;
 }
 @media (max-width: 600px) {
   #app > .v-application__wrap > .v-navigation-drawer {
     top: 0 !important;
-    height: 64px !important;
-    max-height: 64px !important;
-  }
-  #app > .v-application__wrap > .v-app-bar .v-img,
-  #app > .v-application__wrap > .v-app-bar .v-toolbar-title {
-    display: none !important;
+    height: 96px !important;
+    max-height: 96px !important;
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content,
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content > .v-list {
-    height: 64px !important;
+    height: 96px !important;
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content {
-    flex-basis: 64px !important;
+    flex-basis: 96px !important;
     width: calc(100% - 220px) !important;
     max-width: calc(100% - 220px) !important;
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content > .v-list {
-    padding-right: 220px !important;
-    padding-left: 56px !important;
+    padding-right: 12px !important;
+    padding-left: 8px !important;
+    padding-top: 28px !important;
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-list-item {
     min-height: 48px !important;
   }
   .v-main {
-    padding-top: 64px !important;
+    padding-top: 96px !important;
   }
 }
 CSS
@@ -287,7 +339,6 @@ CSS
     accent)
       cat <<'CSS'
 #app > .v-application__wrap > .v-navigation-drawer {
-  background: rgb(var(--v-theme-surface-variant)) !important;
   border-bottom: 2px solid rgb(var(--v-theme-primary)) !important;
 }
 #app > .v-application__wrap > .v-navigation-drawer .v-list-item--active {
@@ -312,6 +363,67 @@ _topbar_runtime() {
     if (drawer?.inert) drawer.inert = false;
   };
 
+  const createStatusRow = () => {
+    const toolbar = document.querySelector('#app > .v-application__wrap > .v-app-bar .v-toolbar__content');
+    if (!toolbar) return;
+
+    let status = toolbar.querySelector('#mos-topbar-status');
+    if (!status) {
+      status = document.createElement('div');
+      status.id = 'mos-topbar-status';
+      status.className = 'mos-topbar-status';
+      status.innerHTML = '<img alt="MOS"><span class="mos-topbar-status__host"></span><span class="mos-topbar-status__separator">|</span><span class="mos-topbar-status__detail" data-status="version"></span><span class="mos-topbar-status__separator">|</span><span class="mos-topbar-status__detail" data-status="uptime"></span><span class="mos-topbar-status__separator">|</span><span class="mos-topbar-status__detail" data-status="cpu"></span>';
+      toolbar.append(status);
+    }
+
+    const logo = status.querySelector('img');
+    const sourceLogo = toolbar.querySelector('.v-img img');
+    if (sourceLogo?.currentSrc || sourceLogo?.src) {
+      logo.src = sourceLogo.currentSrc || sourceLogo.src;
+    }
+
+    const host = status.querySelector('.mos-topbar-status__host');
+    const originalHost = toolbar.querySelector('.v-toolbar-title')?.textContent?.trim();
+    if (originalHost && !host.textContent) host.textContent = originalHost;
+
+    if (!status.dataset.polling) {
+      status.dataset.polling = 'true';
+      const updateStatus = async () => {
+        const token = localStorage.getItem('authToken');
+        if (!token) return;
+        const headers = { Authorization: `Bearer ${token}` };
+
+        try {
+          const [osResponse, loadResponse] = await Promise.all([
+            fetch('/api/v1/mos/osinfo', { headers }),
+            fetch('/api/v1/system/load', { headers }),
+          ]);
+          if (osResponse.ok) {
+            const info = await osResponse.json();
+            host.textContent = info.hostname || originalHost || '';
+            const version = status.querySelector('[data-status="version"]');
+            version.textContent = info.mos?.version ? `MOS ${info.mos.version}` : '';
+            version.hidden = !version.textContent;
+            const uptime = status.querySelector('[data-status="uptime"]');
+            uptime.textContent = info.uptime?.pretty || '';
+            uptime.hidden = !uptime.textContent;
+          }
+          if (loadResponse.ok) {
+            const load = await loadResponse.json();
+            const cpu = status.querySelector('[data-status="cpu"]');
+            cpu.textContent = Number.isFinite(load.cpu?.load) ? `CPU ${load.cpu.load.toFixed(1)}%` : '';
+            cpu.hidden = !cpu.textContent;
+          }
+        } catch {
+          // Keep the last known status while the API is unavailable.
+        }
+      };
+
+      updateStatus();
+      window.setInterval(updateStatus, 15000);
+    }
+  };
+
   const hideNativeActionItems = () => {
     const drawer = document.querySelector(drawerSelector);
     if (!drawer) return;
@@ -334,73 +446,86 @@ _topbar_runtime() {
 
   const createActions = () => {
     const toolbar = document.querySelector('#app > .v-application__wrap > .v-app-bar .v-toolbar__content');
-    if (!toolbar || toolbar.querySelector('#mos-topbar-actions')) return;
+    if (!toolbar) return;
 
-    const actions = document.createElement('div');
-    actions.id = 'mos-topbar-actions';
-    actions.className = 'mos-topbar-actions';
-    actions.innerHTML = `
-      <a class="mos-topbar-action" href="/mosTools/filebrowser" aria-label="Dateibrowser" title="Dateibrowser"><i class="mdi mdi-folder-outline"></i></a>
-      <a class="mos-topbar-action" href="/mosTools/webterminal" aria-label="Terminal" title="Terminal"><i class="mdi mdi-console"></i></a>
-      <div class="mos-topbar-more">
-        <button class="mos-topbar-action" type="button" aria-label="Weitere Aktionen" title="Weitere Aktionen" aria-haspopup="menu" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></button>
-        <div class="mos-topbar-menu" role="menu" hidden>
-          <a class="mos-topbar-menu-item" role="menuitem" href="https://docs.mos-official.net" target="_blank" rel="noopener"><i class="mdi mdi-lifebuoy"></i>Hilfe</a>
-          <button class="mos-topbar-menu-item" role="menuitem" type="button" data-mos-action="logout"><i class="mdi mdi-logout"></i>Abmelden</button>
-          <div class="mos-topbar-divider"></div>
-          <button class="mos-topbar-menu-item" role="menuitem" type="button" data-mos-action="reboot"><i class="mdi mdi-restart"></i>Neustart</button>
-          <button class="mos-topbar-menu-item" role="menuitem" type="button" data-mos-action="shutdown"><i class="mdi mdi-power"></i>Herunterfahren</button>
-        </div>
-      </div>`;
+    let actions = toolbar.querySelector('#mos-topbar-actions');
+    if (!actions) {
+      actions = document.createElement('div');
+      actions.id = 'mos-topbar-actions';
+      actions.className = 'mos-topbar-actions';
+      actions.innerHTML = `
+        <a class="mos-topbar-action" href="/mosTools/filebrowser" aria-label="Dateibrowser" title="Dateibrowser"><i class="mdi mdi-folder-outline"></i></a>
+        <a class="mos-topbar-action" href="/mosTools/webterminal" aria-label="Terminal" title="Terminal"><i class="mdi mdi-console"></i></a>
+        <div class="mos-topbar-more">
+          <button class="mos-topbar-action" type="button" aria-label="Weitere Aktionen" title="Weitere Aktionen" aria-haspopup="menu" aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></button>
+          <div class="mos-topbar-menu" role="menu" hidden>
+            <a class="mos-topbar-menu-item" role="menuitem" href="https://docs.mos-official.net" target="_blank" rel="noopener"><i class="mdi mdi-lifebuoy"></i>Hilfe</a>
+            <button class="mos-topbar-menu-item" role="menuitem" type="button" data-mos-action="logout"><i class="mdi mdi-logout"></i>Abmelden</button>
+            <div class="mos-topbar-divider"></div>
+            <button class="mos-topbar-menu-item" role="menuitem" type="button" data-mos-action="reboot"><i class="mdi mdi-restart"></i>Neustart</button>
+            <button class="mos-topbar-menu-item" role="menuitem" type="button" data-mos-action="shutdown"><i class="mdi mdi-power"></i>Herunterfahren</button>
+          </div>
+        </div>`;
 
-    const moreButton = actions.querySelector('[aria-haspopup="menu"]');
-    const menu = actions.querySelector('.mos-topbar-menu');
-    moreButton.addEventListener('click', () => {
-      menu.hidden = !menu.hidden;
-      moreButton.setAttribute('aria-expanded', String(!menu.hidden));
-    });
+      const moreButton = actions.querySelector('[aria-haspopup="menu"]');
+      const menu = actions.querySelector('.mos-topbar-menu');
+      moreButton.addEventListener('click', () => {
+        menu.hidden = !menu.hidden;
+        moreButton.setAttribute('aria-expanded', String(!menu.hidden));
+      });
 
-    actions.addEventListener('click', async (event) => {
-      const actionButton = event.target.closest('[data-mos-action]');
-      if (!actionButton) return;
-      menu.hidden = true;
-      moreButton.setAttribute('aria-expanded', 'false');
-
-      if (actionButton.dataset.mosAction === 'logout') {
-        const drawer = document.querySelector(drawerSelector);
-        const logoutItem = [...(drawer?.querySelectorAll('.v-list-item') || [])]
-          .find((item) => ['logout', 'abmelden'].includes((item.innerText || '').trim().toLowerCase()));
-        logoutItem?.click();
-        return;
-      }
-
-      const reboot = actionButton.dataset.mosAction === 'reboot';
-      const label = reboot ? 'System jetzt neu starten?' : 'System jetzt herunterfahren?';
-      if (!window.confirm(label)) return;
-
-      try {
-        const response = await fetch(`/api/v1/system/power/${reboot ? 'reboot' : 'shutdown'}`, {
-          method: 'POST',
-          headers: { Authorization: `Bearer ${localStorage.getItem('authToken') || ''}` },
-        });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        window.location.href = reboot ? '/reboot.html' : '/shutdown.html';
-      } catch (error) {
-        window.alert(`Aktion konnte nicht gestartet werden: ${error.message}`);
-      }
-    });
-
-    document.addEventListener('pointerdown', (event) => {
-      if (!actions.contains(event.target)) {
+      actions.addEventListener('click', async (event) => {
+        const actionButton = event.target.closest('[data-mos-action]');
+        if (!actionButton) return;
         menu.hidden = true;
         moreButton.setAttribute('aria-expanded', 'false');
-      }
-    });
-    toolbar.append(actions);
+
+        if (actionButton.dataset.mosAction === 'logout') {
+          const drawer = document.querySelector(drawerSelector);
+          const logoutItem = [...(drawer?.querySelectorAll('.v-list-item') || [])]
+            .find((item) => ['logout', 'abmelden'].includes((item.innerText || '').trim().toLowerCase()));
+          logoutItem?.click();
+          return;
+        }
+
+        const reboot = actionButton.dataset.mosAction === 'reboot';
+        const label = reboot ? 'System jetzt neu starten?' : 'System jetzt herunterfahren?';
+        if (!window.confirm(label)) return;
+
+        try {
+          const response = await fetch(`/api/v1/system/power/${reboot ? 'reboot' : 'shutdown'}`, {
+            method: 'POST',
+            headers: { Authorization: `Bearer ${localStorage.getItem('authToken') || ''}` },
+          });
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          window.location.href = reboot ? '/reboot.html' : '/shutdown.html';
+        } catch (error) {
+          window.alert(`Aktion konnte nicht gestartet werden: ${error.message}`);
+        }
+      });
+
+      document.addEventListener('pointerdown', (event) => {
+        if (!actions.contains(event.target)) {
+          menu.hidden = true;
+          moreButton.setAttribute('aria-expanded', 'false');
+        }
+      });
+      toolbar.append(actions);
+    }
+
+    const more = actions.querySelector('.mos-topbar-more');
+    const notifications = toolbar.querySelector(':scope > .v-badge') || actions.querySelector('.v-badge');
+    const profile = toolbar.querySelector(':scope > a[href="/profile"]') || actions.querySelector('a[href="/profile"]');
+    if (notifications && notifications.parentElement !== actions) actions.insertBefore(notifications, more);
+    if (profile && profile.parentElement !== actions) actions.insertBefore(profile, more);
+    notifications?.setAttribute('title', 'Benachrichtigungen');
+    profile?.setAttribute('aria-label', 'Profil');
+    profile?.setAttribute('title', 'Profil');
   };
 
   const syncTopbar = () => {
     enableDrawer();
+    createStatusRow();
     hideNativeActionItems();
     createActions();
   };
