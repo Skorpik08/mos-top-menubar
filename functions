@@ -59,25 +59,25 @@ _topbar_css() {
 }
 .mos-topbar-status {
   position: absolute;
-  top: 1px;
+  top: 5px;
   left: 12px;
   right: 188px;
   display: flex;
-  height: 22px;
+  height: 15px;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   overflow: hidden;
   color: var(--mos-topbar-fg);
-  font-size: 20px;
+  font-size: 15px;
   line-height: 1;
   white-space: nowrap;
   pointer-events: none !important;
   z-index: 3;
 }
 .mos-topbar-status img {
-  width: 20px;
-  height: 20px;
-  flex: 0 0 20px;
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
   object-fit: contain;
 }
 .mos-topbar-status__host {
@@ -205,7 +205,7 @@ _topbar_css() {
   position: relative;
 }
 .mos-topbar-action {
-  display: inline-flex;
+    top: -4px;
   width: 34px;
   height: 32px;
   flex: 0 0 34px;
@@ -383,8 +383,8 @@ _topbar_css() {
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content {
     flex-basis: 82px !important;
-    width: calc(100% - 192px) !important;
-    max-width: calc(100% - 192px) !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content > .v-list {
     padding-right: 12px !important;
@@ -403,13 +403,14 @@ _topbar_css() {
     left: 8px;
     right: 174px;
     gap: 6px;
-    font-size: 20px;
+    top: 5px;
+    font-size: 15px;
   }
   .mos-topbar-status__host {
     max-width: 22vw;
   }
   .mos-topbar-actions {
-    top: 38px;
+    top: -3px;
     right: 4px;
     gap: 0;
   }
@@ -531,16 +532,13 @@ _topbar_runtime() {
 
           group.addEventListener('pointerenter', (event) => {
             if (event.pointerType !== 'mouse') return;
-            window.clearTimeout(group._mosTopbarCloseTimer);
             if (!group.classList.contains('v-list-group--open')) activator.click();
             schedulePosition();
           });
           group.addEventListener('pointerleave', (event) => {
             if (event.pointerType !== 'mouse') return;
-            window.clearTimeout(group._mosTopbarCloseTimer);
-            group._mosTopbarCloseTimer = window.setTimeout(() => {
-              if (!group.matches(':hover') && group.classList.contains('v-list-group--open')) activator.click();
-            }, 600);
+            if (!group.classList.contains('v-list-group--open')) return;
+            activator.click();
           });
         }
       }
@@ -672,34 +670,11 @@ _topbar_runtime() {
 
       const moreButton = actions.querySelector('[aria-haspopup="menu"]');
       const menu = actions.querySelector('.mos-topbar-menu');
-      const moreContainer = actions.querySelector('.mos-topbar-more');
-      const hoverMenu = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-      let hoverCloseTimer;
       const setMenuOpen = (open) => {
         menu.hidden = !open;
         moreButton.setAttribute('aria-expanded', String(open));
       };
-      moreButton.addEventListener('click', (event) => {
-        if (hoverMenu && moreContainer.matches(':hover')) {
-          setMenuOpen(true);
-          return;
-        }
-        setMenuOpen(menu.hidden);
-      });
-      moreContainer.addEventListener('pointerenter', (event) => {
-        if (hoverMenu && event.pointerType === 'mouse') {
-          window.clearTimeout(hoverCloseTimer);
-          setMenuOpen(true);
-        }
-      });
-      moreContainer.addEventListener('pointerleave', (event) => {
-        if (hoverMenu && event.pointerType === 'mouse') {
-          window.clearTimeout(hoverCloseTimer);
-          hoverCloseTimer = window.setTimeout(() => {
-            if (!moreContainer.matches(':hover')) setMenuOpen(false);
-          }, 600);
-        }
-      });
+      moreButton.addEventListener('click', () => setMenuOpen(menu.hidden));
 
       actions.addEventListener('click', async (event) => {
         const actionButton = event.target.closest('[data-mos-action]');
