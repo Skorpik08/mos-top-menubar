@@ -23,14 +23,14 @@ _topbar_css() {
   left: 0 !important;
   right: 0 !important;
   width: 100vw !important;
-  height: 72px !important;
+  height: 82px !important;
   z-index: 1101 !important;
   background: transparent !important;
   overflow: visible !important;
   pointer-events: none !important;
 }
 #app > .v-application__wrap > .v-app-bar .v-toolbar__content {
-  height: 72px !important;
+  height: 82px !important;
   background: transparent !important;
   pointer-events: none !important;
   overflow: visible !important;
@@ -61,14 +61,14 @@ _topbar_css() {
   position: absolute;
   top: 1px;
   left: 12px;
-  right: 174px;
+  right: 188px;
   display: flex;
   height: 36px;
   align-items: center;
   gap: 10px;
   overflow: hidden;
   color: var(--mos-topbar-fg);
-  font-size: 12px;
+  font-size: 10px;
   line-height: 1;
   white-space: nowrap;
   pointer-events: none !important;
@@ -100,8 +100,8 @@ _topbar_css() {
   right: 0 !important;
   width: 100vw !important;
   max-width: 100vw !important;
-  height: 72px !important;
-  max-height: 72px !important;
+  height: 82px !important;
+  max-height: 82px !important;
   transform: none !important;
   visibility: visible !important;
   z-index: 1100 !important;
@@ -117,10 +117,10 @@ _topbar_css() {
   display: none !important;
 }
 #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content {
-  flex: 0 0 72px !important;
+  flex: 0 0 82px !important;
   width: calc(100% - 250px) !important;
   max-width: calc(100% - 250px) !important;
-  height: 72px !important;
+  height: 82px !important;
   overflow-x: auto !important;
   overflow-y: hidden !important;
   scrollbar-width: none !important;
@@ -136,9 +136,9 @@ _topbar_css() {
   align-items: center !important;
   width: max-content !important;
   min-width: 100% !important;
-  height: 72px !important;
+  height: 82px !important;
   box-sizing: border-box !important;
-  padding: 36px 12px 0 0 !important;
+  padding: 46px 12px 0 0 !important;
   overflow: visible !important;
   background: transparent !important;
   color: var(--mos-topbar-fg) !important;
@@ -161,14 +161,14 @@ _topbar_css() {
 }
 #app > .v-application__wrap > .v-navigation-drawer .v-list-group__items {
   position: fixed !important;
-  top: 72px !important;
+  top: 82px !important;
   left: 8px !important;
   z-index: 1200 !important;
   width: max-content !important;
   min-width: min(220px, calc(100vw - 16px)) !important;
   max-width: min(360px, calc(100vw - 16px)) !important;
   height: auto !important;
-  max-height: calc(100vh - 88px) !important;
+  max-height: calc(100vh - 98px) !important;
   overflow-x: hidden !important;
   overflow-y: auto !important;
   background: #191919 !important;
@@ -190,7 +190,7 @@ _topbar_css() {
 }
 .mos-topbar-actions {
   position: absolute !important;
-  top: 38px;
+  top: 48px;
   right: 8px;
   display: flex;
   flex: 0 0 auto;
@@ -291,48 +291,111 @@ _topbar_css() {
   margin: 5px 0;
   background: rgba(255, 255, 255, 0.16);
 }
+.mos-topbar-power-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.32);
+}
+.mos-topbar-power-dialog {
+  width: min(400px, 100%);
+  overflow: hidden;
+  border-radius: 4px;
+  background: rgb(var(--v-theme-surface));
+  color: rgb(var(--v-theme-on-surface));
+  box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14);
+}
+.mos-topbar-power-title {
+  display: flex;
+  min-height: 56px;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px 8px;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.mos-topbar-power-title .mdi {
+  font-size: 24px;
+}
+.mos-topbar-power-message {
+  padding: 8px 24px 20px;
+}
+.mos-topbar-power-error {
+  padding: 0 24px 12px;
+  color: rgb(var(--v-theme-error));
+}
+.mos-topbar-power-error[hidden] {
+  display: none;
+}
+.mos-topbar-power-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 8px 16px;
+}
+.mos-topbar-power-button {
+  min-width: 64px;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: rgb(var(--v-theme-primary));
+  cursor: pointer;
+  font: inherit;
+  font-weight: 500;
+}
+.mos-topbar-power-button:hover,
+.mos-topbar-power-button:focus-visible {
+  background: rgba(var(--v-theme-primary), 0.1);
+  outline: none;
+}
 #app > .v-application__wrap > .v-navigation-drawer .v-list-group {
   position: relative !important;
   flex: 0 0 auto !important;
 }
 #app > .v-application__wrap > .v-navigation-drawer .v-list-group__items {
-  top: 72px !important;
-  max-height: calc(100vh - 88px) !important;
+  top: 82px !important;
+  max-height: calc(100vh - 98px) !important;
 }
 #app > .v-application__wrap > .v-navigation-drawer .v-list-group__items .v-list-item {
   width: 100% !important;
   white-space: normal !important;
 }
 .v-main {
-  padding-top: 72px !important;
+  padding-top: 82px !important;
   padding-left: 0 !important;
   --v-layout-left: 0px !important;
 }
 @media (max-width: 600px) {
   #app > .v-application__wrap > .v-navigation-drawer {
     top: 0 !important;
-    height: 72px !important;
-    max-height: 72px !important;
+    height: 82px !important;
+    max-height: 82px !important;
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content,
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content > .v-list {
-    height: 72px !important;
+    height: 82px !important;
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content {
-    flex-basis: 72px !important;
+    flex-basis: 82px !important;
     width: calc(100% - 192px) !important;
     max-width: calc(100% - 192px) !important;
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-navigation-drawer__content > .v-list {
     padding-right: 12px !important;
     padding-left: 0 !important;
-    padding-top: 36px !important;
+    padding-top: 46px !important;
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-list-item {
     min-height: 30px !important;
   }
   .v-main {
-    padding-top: 72px !important;
+    padding-top: 82px !important;
   }
 }
 @media (max-width: 600px) {
@@ -340,13 +403,13 @@ _topbar_css() {
     left: 8px;
     right: 174px;
     gap: 6px;
-    font-size: 12px;
+    font-size: 10px;
   }
   .mos-topbar-status__host {
     max-width: 22vw;
   }
   .mos-topbar-actions {
-    top: 38px;
+    top: 48px;
     right: 4px;
     gap: 0;
   }
@@ -369,7 +432,7 @@ _topbar_css() {
   }
   #app > .v-application__wrap > .v-navigation-drawer .v-list-group__items {
     max-width: calc(100vw - 16px) !important;
-    max-height: calc(100vh - 88px) !important;
+    max-height: calc(100vh - 98px) !important;
   }
 }
 @media (max-width: 420px) {
@@ -586,9 +649,24 @@ _topbar_runtime() {
 
       const moreButton = actions.querySelector('[aria-haspopup="menu"]');
       const menu = actions.querySelector('.mos-topbar-menu');
-      moreButton.addEventListener('click', () => {
-        menu.hidden = !menu.hidden;
-        moreButton.setAttribute('aria-expanded', String(!menu.hidden));
+      const moreContainer = actions.querySelector('.mos-topbar-more');
+      const hoverMenu = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      const setMenuOpen = (open) => {
+        menu.hidden = !open;
+        moreButton.setAttribute('aria-expanded', String(open));
+      };
+      moreButton.addEventListener('click', (event) => {
+        if (hoverMenu && moreContainer.matches(':hover')) {
+          setMenuOpen(true);
+          return;
+        }
+        setMenuOpen(menu.hidden);
+      });
+      moreContainer.addEventListener('pointerenter', (event) => {
+        if (hoverMenu && event.pointerType === 'mouse') setMenuOpen(true);
+      });
+      moreContainer.addEventListener('pointerleave', (event) => {
+        if (hoverMenu && event.pointerType === 'mouse') setMenuOpen(false);
       });
 
       actions.addEventListener('click', async (event) => {
@@ -605,7 +683,7 @@ _topbar_runtime() {
           return;
         }
 
-        await openOriginalPowerDialog(actionButton.dataset.mosAction);
+        openPowerConfirmation(actionButton.dataset.mosAction);
       });
 
       document.addEventListener('pointerdown', (event) => {
@@ -649,62 +727,77 @@ _topbar_runtime() {
     profile?.setAttribute('title', translate('profile', 'Profile'));
   };
 
-  const openOriginalPowerDialog = async (action) => {
-    const app = document.querySelector('#app')?.__vue_app__;
-    const router = app?.config?.globalProperties?.$router;
-    if (!router) return;
+  const openPowerConfirmation = (action) => {
+    const reboot = action === 'reboot';
+    const title = translate(action, reboot ? 'Reboot' : 'Shut down');
+    const message = translate(
+      reboot ? 'do you want to reboot your system?' : 'do you want to shutdown your system?',
+      reboot ? 'Do you want to reboot your system?' : 'Do you want to shut down your system?',
+    );
+    const dialog = document.createElement('div');
+    dialog.className = 'mos-topbar-power-overlay';
+    const themeClass = [...(document.querySelector('#app .v-application')?.classList || [])]
+      .find((className) => className.startsWith('v-theme--'));
+    if (themeClass) dialog.classList.add(themeClass);
+    dialog.innerHTML = `<section class="mos-topbar-power-dialog" role="dialog" aria-modal="true" aria-labelledby="mos-topbar-power-title">
+      <div class="mos-topbar-power-title" id="mos-topbar-power-title"><i class="mdi mdi-update"></i><span></span></div>
+      <div class="mos-topbar-power-message"></div>
+      <div class="mos-topbar-power-error" role="alert" hidden></div>
+      <div class="mos-topbar-power-actions"><button class="mos-topbar-power-button" type="button" data-power-cancel></button><button class="mos-topbar-power-button" type="button" data-power-confirm></button></div>
+    </section>`;
+    const titleElement = dialog.querySelector('.mos-topbar-power-title span');
+    const messageElement = dialog.querySelector('.mos-topbar-power-message');
+    const errorElement = dialog.querySelector('.mos-topbar-power-error');
+    const cancelButton = dialog.querySelector('[data-power-cancel]');
+    const confirmButton = dialog.querySelector('[data-power-confirm]');
+    titleElement.textContent = title;
+    messageElement.textContent = message;
+    cancelButton.textContent = translate('cancel', 'Cancel');
+    confirmButton.textContent = translate('ok', 'OK');
 
-    const waitFor = async (findTarget) => {
-      for (let attempt = 0; attempt < 100; attempt += 1) {
-        const target = findTarget();
-        if (target) return target;
-        await new Promise((resolve) => window.setTimeout(resolve, 50));
-      }
-      return null;
+    const closeDialog = () => {
+      document.removeEventListener('keydown', handleKeydown);
+      dialog.remove();
     };
-
-    const originalRoute = router.currentRoute.value.fullPath;
-    const returnAfterCancel = router.currentRoute.value.path !== '/mosTools';
-    if (returnAfterCancel) await router.push('/mosTools');
-
-    const actionLabel = translate(action, action === 'reboot' ? 'Reboot' : 'Shut down');
-    const actionItem = await waitFor(() => [...document.querySelectorAll('#app .v-main .v-list-item')]
-      .find((item) => item.textContent.trim().includes(actionLabel)));
-    if (!actionItem) {
-      if (returnAfterCancel) await router.push(originalRoute);
-      return;
-    }
-
-    actionItem.click();
-    const overlayContainer = document.querySelector('.v-overlay-container');
-    const dialog = await waitFor(() => [...(overlayContainer?.querySelectorAll('.v-overlay--active, [role="dialog"]') || [])]
-      .find((element) => element.textContent.includes(actionLabel)
-        && element.querySelector('.v-card-actions button')));
-    if (!dialog) {
-      if (returnAfterCancel) await router.push(originalRoute);
-      return;
-    }
-    if (!returnAfterCancel) return;
-
-    if (!overlayContainer) return;
-    let returnToPreviousRoute = true;
-    dialog.addEventListener('click', (event) => {
-      const button = event.target.closest('.v-card-actions button');
-      if (!button) return;
-      if (button.textContent.trim() === translate('ok', 'Ok')) returnToPreviousRoute = false;
-      if (button.textContent.trim() === translate('cancel', 'Cancel')) returnToPreviousRoute = true;
-    }, true);
-
-    const dialogObserver = new MutationObserver(() => {
-      if (overlayContainer.querySelector('.v-overlay--active')) return;
-      dialogObserver.disconnect();
-      if (returnToPreviousRoute && router.currentRoute.value.path === '/mosTools') router.push(originalRoute);
+    const handleKeydown = (event) => {
+      if (event.key === 'Escape') closeDialog();
+    };
+    cancelButton.addEventListener('click', closeDialog);
+    dialog.addEventListener('pointerdown', (event) => {
+      if (event.target === dialog) closeDialog();
     });
-    dialogObserver.observe(overlayContainer, {
-      attributes: true,
-      attributeFilter: ['class'],
-      childList: true,
-      subtree: true,
+    document.addEventListener('keydown', handleKeydown);
+    document.body.append(dialog);
+    cancelButton.focus();
+
+    confirmButton.addEventListener('click', async () => {
+      cancelButton.disabled = true;
+      confirmButton.disabled = true;
+      errorElement.hidden = true;
+
+      try {
+        const response = await fetch(`/api/v1/system/power/${action}`, {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${localStorage.getItem('authToken') || ''}` },
+        });
+        if (!response.ok) {
+          const result = await response.json().catch(() => ({}));
+          const errorTitle = translate(`${action} could not be initiated`, `${title} could not be initiated`);
+          errorElement.textContent = `${errorTitle}: ${result.error || translate('unknown error', 'Unknown error')}`;
+          errorElement.hidden = false;
+          cancelButton.disabled = false;
+          confirmButton.disabled = false;
+          return;
+        }
+
+        closeDialog();
+        window.location.href = reboot ? '/reboot.html' : '/shutdown.html';
+      } catch (error) {
+        errorElement.textContent = error.message;
+        errorElement.hidden = false;
+        cancelButton.disabled = false;
+        confirmButton.disabled = false;
+      }
     });
   };
 
